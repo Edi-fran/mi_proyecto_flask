@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Mi Proyecto Flask — UEA{% endblock %}</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+  {% block head_extra %}{% endblock %}
+</head>
+<body class="bg-body">
+
+  <!-- Topbar -->
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url_for('index') }}">
+        <span class="brand-dot"></span>
+        FlaskApp
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navMain" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('index') }}">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('about') }}">Acerca de</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('usuario', nombre='Edilson') }}">Demo usuario</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://flask.palletsprojects.com/" target="_blank" rel="noopener">Docs Flask</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Encabezado institucional -->
+  <header class="py-4 bg-gradient-uea border-bottom">
+    <div class="container d-flex flex-column flex-lg-row align-items-center justify-content-between gap-3">
+      <div class="d-flex align-items-center gap-3">
+        <img
+          src="https://www.uea.edu.ec/web/v2/wp-content/uploads/2023/10/logotipo-UEA-PNG-COLOR-NORMAL-OFICIAL-1-1024x297.png"
+          alt="Universidad Estatal Amazónica - UEA" class="logo-uea">
+        <div class="small text-secondary lh-sm">
+          <div class="fw-semibold text-uppercase">Facultad de Ciencias de la Educación</div>
+          <div>Ingeniería en Tecnologías de la Información</div>
+          <div>Asignatura: <span class="fw-semibold">Desarrollo de Aplicaciones Web</span></div>
+          <div>Docente: <span class="fw-semibold">Ing. Walter Rodrigo Núñez Zamora</span></div>
+          <div class="text-muted">Tema: <span class="fw-semibold">Aplicación Flask básica con rutas y despliegue</span></div>
+        </div>
+      </div>
+      <div class="text-end">
+        <span class="badge rounded-pill text-bg-primary px-3 py-2 shadow-sm">Proyecto académico</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero por página -->
+  {% block hero %}
+  <section class="py-5 hero-surface">
+    <div class="container">
+      <h1 class="display-5 fw-bold mb-2">Mi Proyecto Flask</h1>
+      <p class="lead text-secondary mb-0">Plantillas Jinja2 con layout base reutilizable.</p>
+    </div>
+  </section>
+  {% endblock %}
+
+  <!-- Contenido principal -->
+  <main class="container mb-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-white py-3 mt-auto">
+    <div class="container small d-flex flex-column flex-lg-row align-items-center justify-content-between gap-2">
+      <p class="mb-0 opacity-75">© 2025 Universidad Estatal Amazónica — Proyecto Flask</p>
+      <p class="mb-0 opacity-75">Desplegado con ❤️ · Demo:
+        <a class="link-light text-decoration-underline" href="{{ url_for('usuario', nombre='Edilson') }}">/usuario/Edilson</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS + JS propio -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts_extra %}{% endblock %}
+</body>
+</html>

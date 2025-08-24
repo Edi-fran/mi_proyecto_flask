@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Acerca de — Mi Proyecto Flask — UEA{% endblock %}
+
+{% block hero %}
+<section class="py-5 hero-surface">
+  <div class="container">
+    <h1 class="display-5 fw-bold mb-2">Acerca de</h1>
+    <p class="lead text-secondary mb-0">
+      Información del proyecto, tecnologías y objetivos.
+    </p>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+  <div class="col-lg-7">
+    <div class="card card-glass shadow-lg">
+      <div class="card-body">
+        <h5 class="card-title mb-3">Descripción</h5>
+        <p class="mb-3">
+          Esta aplicación demuestra una estructura Flask con <strong>Jinja2</strong>, herencia de
+          plantillas y archivos estáticos. Mantiene un diseño consistente y reutilizable en todas las páginas.
+        </p>
+        <ul class="list-unstyled small mb-0">
+          <li class="mb-2">✅ Layout base (<code>base.html</code>) con navbar, encabezado institucional y footer.</li>
+          <li class="mb-2">✅ Páginas que heredan el layout (<code>index.html</code>, <code>about.html</code>).</li>
+          <li class="mb-2">✅ Recursos estáticos en <code>static/css</code> y <code>static/js</code>.</li>
+          <li class="mb-2">✅ Listo para Render con <code>gunicorn</code>.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title mb-3">Tecnologías</h5>
+        <ul class="mb-3">
+          <li>Python 3 · Flask</li>
+          <li>Jinja2 (templates)</li>
+          <li>Bootstrap 5 (CDN) + estilos propios</li>
+        </ul>
+        <a class="btn btn-primary" href="{{ url_for('usuario', nombre='Edilson') }}">Ver demo de ruta</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

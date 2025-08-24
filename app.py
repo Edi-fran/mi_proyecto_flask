@@ -1,21 +1,24 @@
 ﻿from flask import Flask, render_template
 
-app = Flask(
-    __name__,
-    template_folder="templates",
-    static_folder="static",
-    static_url_path="/static",
-)
+app = Flask(__name__)   # usa templates/ y static/ por defecto
 
 @app.route("/")
-def inicio():
+def index():
     return render_template("index.html")
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
 
 @app.route("/usuario/<nombre>")
 def usuario(nombre):
     return f"Bienvenido, {nombre}!"
 
+# (opcional) endpoint de prueba
+@app.route("/health")
+def health():
+    return "ok"
+
 if __name__ == "__main__":
-    print("root_path:", app.root_path)
-    print("static_folder:", app.static_folder)
     app.run(debug=True)
+
